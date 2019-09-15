@@ -1,11 +1,20 @@
 package cn.xsw.utils;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class RyanUtil {
+	
+	/**
+	 * 日志对象
+	 */
+	private static Logger log = LogManager.getLogger(RyanUtil.class);
 
 	public static void main(String[] args) {
 		String val = "   ";
 		boolean bs = isEmpty(val);
 		System.out.println("test value isempty:" + bs);
+		log.info("is ovk..");
 	}
 
 	/**
