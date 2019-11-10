@@ -1,4 +1,4 @@
-package cn.xsw.utils;
+package cn.ryan.utils;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<!-- Configure the log output file name to append read and write -->
+		<RollingFile name="RollingFile" fileName="logs/lyodsaml.log" filePattern="logs/lyodsaml.%d{yyyy-MM-dd}.log"
+			append="true">
+			<!-- Output format -->
+			<PatternLayout pattern="[%-5p] [%d{yyyy/MM/dd HH:mm:ss}] [%t] [%c] - %m%n" />
+			<!-- Setting policy -->
+			<Policies>
+				<!-- Time based trigger strategy. The strategy is mainly to accomplish periodic log file archiving. There are two parameters: 
+					interval, integer, and specify the time interval between the two operations. -->
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+			</Policies>
+		</RollingFile>
+		<!-- standard output -->
+		<Console name="Console" target="SYSTEM_OUT">
+			<!-- Output format -->
+			<PatternLayout pattern="[%-5p] [%d{yyyy/MM/dd HH:mm:ss}] [%t] [%c] - %m%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<!-- Specify a particular type of output level -->
+		<logger name="com.lyods" level="info" additivity="false">
+			<appender-ref ref="Console" />
+			<appender-ref ref="RollingFile" />
+		</logger>
+		<!-- Specify a particular type of output level -->
+		<logger name="org.apache.commons.jexl2" level="error" additivity="false">
+			<appender-ref ref="Console" />
+			<appender-ref ref="RollingFile" />
+		</logger>
+		<!-- org.apache.shiro for error only -->
+		<logger name="org.apache.shiro" level="error" additivity="false">
+			<appender-ref ref="Console" />
+			<appender-ref ref="RollingFile" />
+		</logger>
+		<!-- Configure recorder level -->
+		<Root level="info">
+			<!-- Output format -->
+			<AppenderRef ref="RollingFile" />
+			<AppenderRef ref="Console" />
+		</Root>
+	</Loggers>
+</Configuration>  
