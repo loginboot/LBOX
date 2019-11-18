@@ -2,7 +2,7 @@
 <Configuration>
 	<Appenders>
 		<!-- Configure the log output file name to append read and write -->
-		<RollingFile name="RollingFile" fileName="logs/lyodsaml.log" filePattern="logs/lyodsaml.%d{yyyy-MM-dd}.log"
+		<RollingFile name="RollingFile" fileName="logs/ryan-core.log" filePattern="logs/ryan-core.%d{yyyy-MM-dd}.log"
 			append="true">
 			<!-- Output format -->
 			<PatternLayout pattern="[%-5p] [%d{yyyy/MM/dd HH:mm:ss}] [%t] [%c] - %m%n" />
@@ -21,17 +21,7 @@
 	</Appenders>
 	<Loggers>
 		<!-- Specify a particular type of output level -->
-		<logger name="com.lyods" level="info" additivity="false">
-			<appender-ref ref="Console" />
-			<appender-ref ref="RollingFile" />
-		</logger>
-		<!-- Specify a particular type of output level -->
-		<logger name="org.apache.commons.jexl2" level="error" additivity="false">
-			<appender-ref ref="Console" />
-			<appender-ref ref="RollingFile" />
-		</logger>
-		<!-- org.apache.shiro for error only -->
-		<logger name="org.apache.shiro" level="error" additivity="false">
+		<logger name="cn.ryan" level="info" additivity="false">
 			<appender-ref ref="Console" />
 			<appender-ref ref="RollingFile" />
 		</logger>

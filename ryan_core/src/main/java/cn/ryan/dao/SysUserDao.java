@@ -1,5 +1,8 @@
 package cn.ryan.dao;
 
-public interface SysUserDao {
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface SysUserDao extends BaseDao {
 
 }
