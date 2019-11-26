@@ -1,15 +1,24 @@
 package cn.ryan.model.rb;
 
+import java.io.Serializable;
+
+import cn.ryan.model.AbstractEntity;
+
 /**
  * 
  * @author cn.ryan
  * @creator xiesw
  * @version 1.0.0
  * @date 2019-11-10
- * @description 文件类型表模型
+ * @description 鏂囦欢绫诲瀷
  *
  */
-public class RbFileType {
+public class RbFileType extends AbstractEntity implements Serializable {
+
+	/**
+	 * ID
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private int id;
 
