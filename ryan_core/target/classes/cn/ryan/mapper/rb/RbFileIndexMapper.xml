@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ryan.dao.rb.RbFileIndexDao">
+	<!-- 返回结果集封装对象 -->
+	<resultMap id="fileIndexMap" type="cn.ryan.model.rb.RbFileIndex">
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="PKEY" property="pkey" jdbcType="VARCHAR" />
+		<result column="FILE_TYPE" property="fileType" jdbcType="INTEGER" />
+		<result column="FILE_NAME" property="fileName" jdbcType="VARCHAR" />
+		<result column="FILE_INDEX" property="fileIndex" jdbcType="VARCHAR" />
+		<result column="FILE_UPDATE_DATE" property="fileUpdateDate" jdbcType="VARCHAR" />
+		<result column="FILE_SIZE" property="fileSize" jdbcType="BIGINT" />
+		<result column="READ_TIMES" property="readTimes" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<!-- 根据ID返回一条记录 -->
+	<select id="findOne" resultMap="fileIndexMap" parameterType="java.lang.Integer">
+		SELECT * FROM T_RB_FILE_INDEX WHERE ID=#{id}
+	</select>
+</mapper>

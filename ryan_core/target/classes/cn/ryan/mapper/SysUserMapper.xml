@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.ryan.dao.SysUserDao">
+	<!-- 返回结果集封装对象 -->
+	<resultMap id="sysUserMap" type="cn.ryan.model.SysUser">
+		<id column="USERID" property="userId" jdbcType="INTEGER" />
+		<result column="LOGIN_NAME" property="loginName" jdbcType="VARCHAR" />
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+		<result column="SALT" property="salt" jdbcType="VARCHAR" />
+		<result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+		<result column="FAIL_TIMES" property="failTimes" jdbcType="INTEGER" />
+		<result column="INIT_PWD" property="initPwd" jdbcType="INTEGER" />
+		<result column="STATUS" property="status" jdbcType="INTEGER" />
+		<result column="HISTORY_PWD" property="historyPwd" jdbcType="VARCHAR" />
+		<result column="LOCK_REASON" property="lockReason" jdbcType="INTEGER" />
+		<result column="PWD_LAST_MODIFY_DATE" property="pwdLastModifyDate" jdbcType="VARCHAR" />
+		<result column="LAST_LOGIN_DATE" property="lastLoginDate" jdbcType="VARCHAR" />
+		<result column="CREATE_DATE" property="createDate" jdbcType="VARCHAR" />
+		<result column="LAST_MODIFY_DATE" property="lastModifyDate" jdbcType="VARCHAR" />
+		<association column="CREATOR_ID" property="creatorUser" javaType="com.lyods.model.User"
+			select="com.lyods.dao.UserDao.findOne" />
+		<association column="MODIFIER_ID" property="modifierUser" javaType="com.lyods.model.User"
+			select="com.lyods.dao.UserDao.findOne" />
+	</resultMap>
+
+	<!-- 根据ID返回一条记录 -->
+	<select id="findOne" resultMap="sysUserMap" parameterType="java.lang.Integer">
+		SELECT * FROM T_SYS_USER WHERE USERID=#{id}
+	</select>
+
 
 </mapper>
