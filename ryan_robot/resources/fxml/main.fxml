@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 登录页面展示 -->
+
+<?import cn.ryan.robot.gui.*?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.stage.*?>
+<?import javafx.scene.control.MenuBar?>
+
+<AnchorPane fx:controller="cn.ryan.robot.gui.RobotMainCtrl" xmlns:fx="http://javafx.com/fxml" styleClass="main-win">
+	
+	<stylesheets>
+		<URL value="@/css/robot.css" />
+	</stylesheets>
+	
+	
+</AnchorPane>

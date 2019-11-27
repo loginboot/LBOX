@@ -1,15 +1,16 @@
 package cn.ryan.robot.gui;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 public class RobotLoginCtrl {
 
 	@FXML
-	private TextField textField;
+	private Text actiontarget;
 
 	@FXML
-	protected void doSomething() {
-		System.out.println("The button was clicked!"+textField.getText());
+	protected void handleSubmitButtonAction() {
+	    actiontarget.setText("Sign in button pressed");
+		System.out.println("The button was clicked!");
 	}
 }
