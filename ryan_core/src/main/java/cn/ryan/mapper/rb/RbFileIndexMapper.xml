@@ -17,4 +17,7 @@
 	<select id="findOne" resultMap="fileIndexMap" parameterType="java.lang.Integer">
 		SELECT * FROM T_RB_FILE_INDEX WHERE ID=#{id}
 	</select>
+	
+	<!-- 新增一笔记录 -->
+	
 </mapper>

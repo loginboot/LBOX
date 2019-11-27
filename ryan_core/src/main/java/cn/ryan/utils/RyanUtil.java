@@ -1,49 +1,58 @@
 package cn.ryan.utils;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * 
+ * @author ryan.cn
+ * @creator ryan
+ * @version 1.0.0
+ * @description Ryanä¸»è¦å·¥å…·å®ç°ç±»
+ *
+ */
 public class RyanUtil {
-	
-	/**
-	 * ÈÕÖ¾¶ÔÏó
-	 */
-	private static Logger log = LogManager.getLogger(RyanUtil.class);
 
-	public static void main(String[] args) {
-		String val = "   ";
-		boolean bs = isEmpty(val);
-		System.out.println("test value isempty:" + bs);
-		log.info("is ovk..");
-	}
+    /**
+     * æ—¥å¿—
+     */
+    private static Logger log = LogManager.getLogger(RyanUtil.class);
 
-	/**
-	 * ÅĞ¶ÏÊÇ·ñÎª""»ònull
-	 * 
-	 * @param val
-	 * @return true.Îª¿Õ¸ñ»ònull false.ÓĞÄÚÈİ
-	 */
-	public static boolean isEmpty(String val) {
-		if (val == null || "".equals(trim(val))) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+    public static void main(String[] args) {
+        String val = "   ";
+        boolean bs = isEmpty(val);
+        System.out.println("test value isempty:" + bs);
+        log.info("is ovk..");
+    }
 
-	/**
-	 * È¥³ıÁ½±ß¿Õ¸ñ£¬ÔöÇ¿È«½Ç¿Õ¸ñ´¦Àí
-	 * 
-	 * @param val
-	 * @return
-	 */
-	public static String trim(String val) {
-		if (val == null) {
-			return "";
-		} else {
-			val = val.replace("¡¡", " ");
-			return val.trim();
-		}
-	}
+    /**
+     *  åˆ¤æ–­å†…å®¹æ˜¯å¦ä¸ºç©º
+     * 
+     * @param val
+     * @return true
+     */
+    public static boolean isEmpty(String val) {
+        if (val == null || "".equals(trim(val))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * å»é™¤ä¸¤è¾¹ç©ºæ ¼
+     * 
+     * @param val
+     * @return
+     */
+    public static String trim(String val) {
+        if (val == null) {
+            return "";
+        } else {
+            val = StringUtils.replace(val, "ã€€", " ");
+            return val.trim();
+        }
+    }
 
 }
