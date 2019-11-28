@@ -1,6 +1,8 @@
 package cn.ryan.robot;
 
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,7 +10,6 @@ import org.apache.logging.log4j.Logger;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -22,6 +23,9 @@ public class Robot extends Application {
      */
     private static Logger log = LogManager.getLogger(Robot.class);
 
+    //这里是Robot创建一个Controller容器
+    public static Map<String, Object> ctrsMap = new HashMap<String, Object>();
+
     // 拖动时下标参数
     private double x1;
     private double y1;
@@ -34,12 +38,12 @@ public class Robot extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
         primaryStage.setTitle("FXML Example");
         URL ur = getClass().getResource("/fxml/main.fxml");
-        Pane mp = (Pane) FXMLLoader.load(ur);
+        Pane mp = FXMLLoader.load(ur);
+
         Scene ms = new Scene(mp, 320, 300);
-        //将鼠标改成小手 
-        ms.setCursor(Cursor.CLOSED_HAND);
         // 注册整个窗口拖动事件
         addMoveEvent(primaryStage, ms);
         // 设置背景为空
@@ -47,6 +51,9 @@ public class Robot extends Application {
         // 设置整个窗口透明并无标题
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setScene(ms);
+
+        // 初始調用controller
+       
         primaryStage.show();
     }
 

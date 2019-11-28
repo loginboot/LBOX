@@ -8,17 +8,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.stage.*?>
-<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.layout.HBox?>
 
-<AnchorPane fx:controller="cn.ryan.robot.gui.RobotMainCtrl" xmlns:fx="http://javafx.com/fxml" styleClass="main-win">
-	
+<AnchorPane fx:controller="cn.ryan.robot.gui.RobotMainCtrl" xmlns:fx="http://javafx.com/fxml"
+	styleClass="main-win">
+
 	<stylesheets>
 		<URL value="@/css/robot.css" />
 	</stylesheets>
-	
-	
+	<Text styleClass="main-win-boll" AnchorPane.leftAnchor="80" AnchorPane.topAnchor="0">Robot Ryan</Text>
+	<VBox fx:id="blueFlame" styleClass="main-win-boll" AnchorPane.leftAnchor="20" AnchorPane.topAnchor="30"
+		prefHeight="60.0" prefWidth="60.0" onMouseClicked="#onShowMenu">
+	</VBox>
 </AnchorPane>
