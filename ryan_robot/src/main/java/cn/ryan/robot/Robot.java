@@ -25,6 +25,8 @@ public class Robot extends Application {
 
     //这里是Robot创建一个Controller容器
     public static Map<String, Object> ctrsMap = new HashMap<String, Object>();
+    // 用於刷新
+    public static Map<String, Stage> stgMap = new HashMap<String, Stage>();
 
     // 拖动时下标参数
     private double x1;
@@ -42,19 +44,19 @@ public class Robot extends Application {
         primaryStage.setTitle("FXML Example");
         URL ur = getClass().getResource("/fxml/main.fxml");
         Pane mp = FXMLLoader.load(ur);
-
         Scene ms = new Scene(mp, 320, 300);
         // 注册整个窗口拖动事件
         addMoveEvent(primaryStage, ms);
         // 设置背景为空
+        ms.getRoot().setStyle("-fx-background-color: transparent");
         ms.setFill(null);
         // 设置整个窗口透明并无标题
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setScene(ms);
-
         // 初始調用controller
-       
         primaryStage.show();
+        stgMap.put("MAIN", primaryStage);
+
     }
 
     /**

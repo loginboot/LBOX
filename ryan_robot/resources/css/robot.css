@@ -12,6 +12,11 @@
 	-fx-background-size: 100.0% 100.0%;
 	-fx-padding: 10.0 5.0 10.0 5.0;
 }
+
+.min-win-title{
+	-fx-pref-width:300px;
+}
+
 .main-win-boll:hover {
 	-fx-cursor: hand;
 	-fx-background-image: url("/img/redflame.png");
@@ -21,11 +26,19 @@
 }
 
 .main-win-menu-pop{
+	-fx-border-color: red;
+    -fx-border-width: 2.0;
+    -fx-border-radius: 5.0;
+    -fx-padding: 10.0 5.0 10.0 5.0;
 	-fx-background-color: linear-gradient(#2A5058, #61a2b1);
 	-fx-effect: dropshadow(three-pass-box, rgba(0.0, 0.0, 0.0, 0.6), 5.0, 0.0, 0.0, 1.0);
 }
-.main-win-menu-pop text{
-	-fx-color:red;
+.main-win-menu-pop Text{
+	 -fx-font-size: 18.0px;
+	 -fx-fill:red;
+}
+.main-win-menu-pop Text:hover{
+	-fx-fill:#FFF;
 }
 
 .login-win {

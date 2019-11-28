@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import cn.ryan.robot.Robot;
+import cn.ryan.robot.action.MenuAction;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
@@ -17,6 +18,9 @@ public class RobotMainCtrl implements Initializable {
     @FXML
     private VBox blueFlame;
 
+    @FXML
+    private Text chgTitle;
+
     private Popup pop;
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -27,7 +31,9 @@ public class RobotMainCtrl implements Initializable {
 
         // 增加popup內容
         try {
-            Text txt = new Text("aasd");
+            Text txt = new Text("Login");
+
+            txt.setOnMouseClicked(new MenuAction("aas"));
             Text txt2 = new Text("aasd2");
             Text txt3 = new Text("aasd3");
             VBox vb = new VBox();
@@ -37,6 +43,7 @@ public class RobotMainCtrl implements Initializable {
             vb.getStyleClass().add("main-win-menu-pop");
             URL ur = getClass().getResource("/css/robot.css");
             vb.getStylesheets().add(ur.toExternalForm());
+
             pop = new Popup();
             pop.getContent().add(vb);
             pop.setAutoHide(true);
@@ -60,8 +67,7 @@ public class RobotMainCtrl implements Initializable {
             final Point2D origin = blueFlame.localToScene(0, 0);
             final double anchorX = parent.getX() + origin.getX() + blueFlame.getScene().getX();
             final double anchorY = parent.getY() + origin.getY() + blueFlame.getScene().getY();
-            pop.show(parent, anchorX + 30, anchorY + 40);
-
+            pop.show(parent, anchorX + 25, anchorY + 38);
         }
     }
 }

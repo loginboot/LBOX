@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.stage.*?>
-<?import javafx.scene.layout.HBox?>
 
 <AnchorPane fx:controller="cn.ryan.robot.gui.RobotMainCtrl" xmlns:fx="http://javafx.com/fxml"
 	styleClass="main-win">
@@ -17,7 +16,10 @@
 	<stylesheets>
 		<URL value="@/css/robot.css" />
 	</stylesheets>
-	<Text styleClass="main-win-boll" AnchorPane.leftAnchor="80" AnchorPane.topAnchor="0">Robot Ryan</Text>
+
+	<HBox styleClass="min-win-title" spacing="10" AnchorPane.leftAnchor="30" alignment="bottom_left">
+		<Text fx:id="chgTitle">Robot Hellow Web Ryan</Text>
+	</HBox>
 	<VBox fx:id="blueFlame" styleClass="main-win-boll" AnchorPane.leftAnchor="20" AnchorPane.topAnchor="30"
 		prefHeight="60.0" prefWidth="60.0" onMouseClicked="#onShowMenu">
 	</VBox>
