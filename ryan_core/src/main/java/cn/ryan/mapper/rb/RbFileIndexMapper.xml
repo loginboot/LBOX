@@ -13,6 +13,14 @@
 		<result column="READ_TIMES" property="readTimes" jdbcType="INTEGER" />
 	</resultMap>
 
+	<!-- 返回分页查询列表 -->
+	<select id="findByPage" resultMap="fileIndexMap" parameterType="map">
+		SELECT f.* FROM T_RB_FILE_INDEX f WHERE 1=1
+		<if test="EQ_fileType!=''">AND f.FILE_TYPE=#{EQ_fileType} </if>
+		<if test="RIGHTLIKE_fileIndex!=''">AND f.FILE_INDEX like CONCAT(#{RIGHTLIKE_fileIndex},'%') </if>
+		ORDER BY f.ID
+	</select>
+
 	<!-- 根据ID返回一条记录 -->
 	<select id="findOne" resultMap="fileIndexMap" parameterType="java.lang.Integer">
 		SELECT * FROM T_RB_FILE_INDEX WHERE ID=#{id}
@@ -20,9 +28,15 @@
 
 	<!-- 新增一笔记录 -->
 	<insert id="save" parameterMap="fileIndexMap">
+		<![CDATA[
 		INSERT INTO T_RB_FILE_INDEX(PKEY,FILE_TYPE,FILE_NAME,FILE_INDEX,FILE_UPDATE_DATE,FILE_SIZE,READ_TIMES)
 		VALUES(#{pkey},#{fileType},#{fileName},#{fileIndex},#{fileUpdateDate},#{fileSize},#{readTimes})
+		]]>
 	</insert>
+	
+	<update id="update" parameterMap="fileIndexMap">
+	
+	</update>
 
 	<!-- 删除一笔记录 -->
 	<delete id="delete" parameterType="java.lang.Integer">
