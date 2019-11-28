@@ -12,12 +12,20 @@
 		<result column="FILE_SIZE" property="fileSize" jdbcType="BIGINT" />
 		<result column="READ_TIMES" property="readTimes" jdbcType="INTEGER" />
 	</resultMap>
-	
+
 	<!-- 根据ID返回一条记录 -->
 	<select id="findOne" resultMap="fileIndexMap" parameterType="java.lang.Integer">
 		SELECT * FROM T_RB_FILE_INDEX WHERE ID=#{id}
 	</select>
-	
+
 	<!-- 新增一笔记录 -->
-	
+	<insert id="save" parameterMap="fileIndexMap">
+		INSERT INTO T_RB_FILE_INDEX(PKEY,FILE_TYPE,FILE_NAME,FILE_INDEX,FILE_UPDATE_DATE,FILE_SIZE,READ_TIMES)
+		VALUES(#{pkey},#{fileType},#{fileName},#{fileIndex},#{fileUpdateDate},#{fileSize},#{readTimes})
+	</insert>
+
+	<!-- 删除一笔记录 -->
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM T_RB_FILE_INDEX WHERE ID=#{id}
+	</delete>
 </mapper>
