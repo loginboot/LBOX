@@ -14,7 +14,7 @@
 }
 
 .min-win-title{
-	-fx-pref-width:300px;
+	-fx-pref-width:300.0px;
 }
 
 .main-win-boll:hover {
@@ -23,6 +23,32 @@
 }
 .main-win-boll-sp{
 	-fx-background-color: linear-gradient(#61a2b1, #2A5058);
+}
+
+.win-menu-box{
+	-fx-background-radius: 5.0px;
+	-fx-background-color: linear-gradient(#61a2b1, #2A5058);
+}
+
+.win-menu-list {
+    -fx-background-insets: 0.0;
+    -jfx-cell-horizontal-margin: 0.0;
+    -jfx-cell-vertical-margin: 5.0;
+    -jfx-vertical-gap: 10.0;
+    -jfx-expanded: false;
+    -fx-pref-width: 120.0;
+    -fx-background-radius: 5.0px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0.0, 0.0, 0.0, 0.9), 5.0, 0.0, 0.0, 1.0);
+}
+
+.win-menu-list .list-cell:odd:selected,.win-menu-list .list-cell:even:selected {
+    -fx-background-color: rgba(0.0, 0.0, 255.0, 0.2);
+}
+
+.win-menu-list .list-cell{
+	-fx-text-fill: #292e34;
+    -fx-font-family: Arial;
+    -fx-pref-height: 30.0px;
 }
 
 .main-win-menu-pop{

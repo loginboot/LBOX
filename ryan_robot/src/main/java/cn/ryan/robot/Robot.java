@@ -55,7 +55,7 @@ public class Robot extends Application {
         primaryStage.setScene(ms);
         // 初始調用controller
         primaryStage.show();
-        stgMap.put("MAIN", primaryStage);
+        stgMap.put(Robot.class.getSimpleName(), primaryStage);
 
     }
 

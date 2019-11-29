@@ -20,12 +20,16 @@ public class RobotLogin extends Application {
         primaryStage.setScene(ms);
 
         // 初始調用controller
-
         primaryStage.show();
+        Robot.stgMap.put(RobotLogin.class.getSimpleName(), primaryStage);
     }
 
-    public void show() throws Exception {
-        Stage st = new Stage();
-        start(st);
+    public void show() {
+        try {
+            Stage st = new Stage();
+            start(st);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
     }
 }
