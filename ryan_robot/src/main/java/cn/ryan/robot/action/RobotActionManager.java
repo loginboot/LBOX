@@ -1,15 +1,14 @@
 package cn.ryan.robot.action;
 
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 
 public class RobotActionManager {
 
-    public static void addMenuAction(Label... labels) {
-        // 註冊菜單事件
-        for (Label label : labels) {
-            MenuAction ma = new MenuAction(label.getId());
-            label.setOnMouseClicked(ma);
-        }
-    }
+	public static void addMenuAction(ListView<Label> mlist) {
+		// 註冊菜單事件
+		MenuAction ma = new MenuAction(mlist);
+		mlist.setOnMouseClicked(ma);
+	}
 
 }

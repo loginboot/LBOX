@@ -15,6 +15,7 @@
 
 .min-win-title{
 	-fx-pref-width:300.0px;
+	-fx-font-weight:bold;
 }
 
 .main-win-boll:hover {
@@ -49,6 +50,10 @@
 	-fx-text-fill: #292e34;
     -fx-font-family: Arial;
     -fx-pref-height: 30.0px;
+}
+
+.win-menu-list .list-cell:hover{
+	-fx-background-color: rgba(202.0, 230.0, 247.0, 1.0);
 }
 
 .main-win-menu-pop{
