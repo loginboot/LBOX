@@ -25,7 +25,12 @@ CREATE TABLE T_SYS_USER
   SALT                   VARCHAR(128),
   PASSWORD               VARCHAR(200),
   INT_PWD                INTEGER NOT NULL,
+  FAIL_TIMES             INTEGER NOT NULL,
   STATUS                 INTEGER NOT NULL,
+  HISTORY_PWD            VARCHAR(2000),
+  LOCK_REASON            INTEGER,
+  PWD_LAST_MODIFY_DATE   VARCHAR(26),
+  LAST_LOGIN_DATE        VARCHAR(26),
   CREATOR_ID             INTEGER NOT NULL,
   CREATE_DATE            VARCHAR(26),
   MODIFIER_ID            INTEGER NOT NULL,
@@ -50,12 +55,12 @@ CREATE INDEX SYS_USER_EXT_IDX2 ON T_SYS_USER_EXT(LABEL_NAME);
 CREATE TABLE T_SYS_MENU
 (
   MID                    INTEGER NOT NULL PRIMARY KEY,
-  SYSCODE               VARCHAR(50) NOT NULL,
+  SYSCODE                VARCHAR(50) NOT NULL,
   NAME                   VARCHAR(100) NOT NULL,
   TYPE                   INTEGER NOT NULL,
   PID                    INTEGER NOT NULL,
-  URI                    INTEGER NOT NULL,
-  PERMISSION             INTEGER NOT NULL,
+  URI                    VARCHAR(200) NOT NULL,
+  PERMISSION             VARCHAR(100) NOT NULL,
   DEPTH                  INTEGER NOT NULL,
   SEQ                    INTEGER NOT NULL
 );

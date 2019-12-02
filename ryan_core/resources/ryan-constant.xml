@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<description>application context for constant</description>
+	<!-- appctx -->
+	<bean id="appctx" class="cn.ryan.ctx.AppCtx"><!-- init-method="init"> -->
+		<property name="params">
+			<map>
+				<!-- 是否开启TimeZone转换 -->
+				<entry key="EnableTimeZone" value="false"/>
+			    <entry key="InvalidFilePattern" value="(.*\.bat|.*\.vbs|.*\.exe)" />
+				<!-- upload directory -->
+				<entry key="UploadDir" value="file:/c:\lyodsUpload" />
+				<entry key="UploadTemp" value="upload/temp" />
+				<entry key="EmailReport" value="file:/c:\lyodsUpload\emailReport" />
+				<entry key="TmpKeepDays" value="7" />
+				<entry key="jxlTemplates" value="templates/jxls" />
+				<entry key="reportTemplates" value="templates/report" />
+				<entry key="importTemplates" value="templates/import" />
+				<entry key="emailMaxRetrytimes" value="5" />
+				<entry key="FileMaxSize" value="20000000" />
+				<!-- Export Max Export Number -->
+				<entry key="MaxExportNum" value="20000" />
+				<!-- client logo path -->
+				<entry key="ClientLogo" value="statics/styles/img" />
+				<!-- Admin Change LoginName -->
+				<entry key="AdminChgLoginName" value="false" />
+				<!-- DEFAULT PAGE SIZE -->
+				<entry key="defaultPageSize" value="20"></entry>
+				<!-- 忘记密码链接的有效分钟数 -->
+				<entry key="forgotPwdActiveMins" value="1440"></entry>
+			</map>
+		</property>
+		<property name="objparams">
+			<map>
+				<!-- language -->
+				<entry key="lang">
+					<list>
+						<value>en_US|English</value>
+						<value>zh_TW|繁體中文</value>
+						<value>zh_CN|简体中文</value>
+					</list>
+				</entry>
+				<!-- Default Page Size -->
+				<entry key="pageSize">
+					<list>
+						<value>5</value>
+						<value>10</value>
+						<value>20</value>
+						<value>30</value>
+					</list>
+				</entry>
+				<!-- Client Parameters -->
+				<entry key="clientParams">
+					<list>
+						<!-- PARAM;LABEL -->
+						<value>SESSIONTIMEOUT;param.SESSIONTIMEOUT;required digits=true maxlength=5</value>
+						<value>mail.host;param.mail.host;maxlength=100</value>
+						<value>mail.smtp.port;param.mail.smtp.port;digits=true maxlength=6</value>
+						<value>mail.smtp.auth;param.mail.smtp.auth;trueOrFalse=true</value>
+						<value>mail.expired.day;param.mail.expired;digits=true required maxlength=3</value>
+						<!-- <value>mail.transport.protocol;param.mail.transport.protocol</value> -->
+						<value>mail.from;param.mail.from;email=true maxlength=100</value>
+						<value>mail.smtp.user;param.mail.smtp.user;maxlength=100</value>
+						<value>mail.password;param.mail.password;maxlength=100</value>
+						<value>mail.smtp.connectiontimeout;param.mail.smtp.connectiontimeout;digits=true maxlength=5</value>
+						<value>mail.smtp.timeout;param.mail.smtp.timeout;digits=true maxlength=5</value>
+						<value>RESET_PWD_EMAIL_NOTIFICATION;ERRCODE.RESET_PWD_EMAIL_NOTIFICATION;trueOrFalse=true</value>
+						<value>ENABLE_FORGOT_PASSWORD;ERRCODE.ENABLE_FORGOT_PASSWORD;trueOrFalse=true</value>
+					</list>
+				</entry>
+				<entry key="pwdControl">
+					<list>
+						<value>PWD_VALID_DAYNUM;param.pwdValide;required digits=true maxlength=4</value>
+						<value>PWD_FAIL_ADVANCE_DAYS;param.pwdFailAdvanceDays;required digits=true maxlength=2</value>
+						<value>PWD_MIN_LENGTH;param.pwdMinLen;required digits=true maxlength=2</value>
+						<value>PWD_MIN_ALPHA_CHAR;param.minWrdLength;required digits=true maxlength=2</value>
+						<value>PWD_MIN_NUM_CHAR;param.minMathLength;required digits=true maxlength=2</value>
+						<value>PWD_MIN_SPECIAL_CHAR;param.minSpacialLength;required digits=true maxlength=2</value>
+						<value>PWD_HIST_SIZE;param.historyLength;required digits=true maxlength=2</value>
+						<value>PWDMAXFAILTIMES;param.PWDMAXFAILTIMES;required digits=true maxlength=2</value>
+						<value>MIN_DAY_ACCOUNT_EXPIRE;param.MIN_DAY_ACCOUNT_EXPIRE;digits=true maxlength=3</value>
+						<value>MIN_DAY_INITIALIZE_LOGIN;param.MinLoginDay;digits=true maxlength=3</value>
+						<value>PWD_CONTAIN_UPPER_CHAR;param.isBig;trueOrFalse=true</value>
+					</list>
+				</entry>
+				<!-- Email templates -->
+				<entry key="emailTemplates">
+					<map>
+						<!-- template name|subject -->
+						<entry key="resetpwd" value="resetpwd.vm|reset password notification" />
+						<entry key="userFgPwd" value="userFgPwd.vm|PUB.userFgPwd"></entry>
+					</map>
+				</entry>
+				<!-- email receive -->
+				<entry key="emailReceive">
+					<map>
+						<entry key="username" value="lyodsemsd@gmail.com" />
+						<entry key="password" value="Lyodssoft" />
+						<entry key="protocol" value="imap" />
+						<entry key="host" value="imap.gmail.com" />
+						<entry key="isSSL" value="true" />
+						<entry key="readSize" value="10" />
+					</map>
+				</entry>
+			</map>
+		</property>
+	</bean>
+</beans>

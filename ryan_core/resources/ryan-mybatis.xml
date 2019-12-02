@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- 配置管理器 -->
+<configuration>
+
+	<plugins>
+		<plugin interceptor="com.lyods.mybatis.utils.PagePlugin">
+			<property name="dialect" value="sqlserver" />
+			<property name="pageSqlId" value=".*findByPage*.*" />
+		</plugin>
+	</plugins>
+
+</configuration>
