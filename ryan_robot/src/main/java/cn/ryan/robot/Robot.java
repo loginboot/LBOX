@@ -2,11 +2,14 @@ package cn.ryan.robot;
 
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import cn.ryan.utils.RyanLangUtil;
+import cn.ryan.utils.RyanUtil;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -35,15 +38,33 @@ public class Robot extends Application {
     private double y_stage;
 
     public static void main(String[] args) {
+        String lang = "zh_CN";
+        // 讀取參數
+        for (String arg : args) {
+            String[] arr = arg.split("=", 2);
+            String val = RyanUtil.trim(arr[1]);
+            String op = RyanUtil.trim(arr[0]);
+            if (op.equalsIgnoreCase("-LANG")) {
+                lang = val;
+            }
+        }
+
+        //啟動程序時，默認設置語言
+        if ("zh_CN".equalsIgnoreCase(lang)) {
+            Locale.setDefault(Locale.CHINA); //指定为中文
+        } else {
+            Locale.setDefault(Locale.US); //默認為英文
+        }
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
-        primaryStage.setTitle("FXML Example");
+        log.info("Begin start robot.");
+        // 設置標題
+        primaryStage.setTitle(RyanLangUtil.getMsgByCode("robot.title"));
         URL ur = getClass().getResource("/fxml/main.fxml");
-        Pane mp = FXMLLoader.load(ur);
+        Pane mp = FXMLLoader.load(ur, RyanLangUtil.getResBundle());
         Scene ms = new Scene(mp, 320, 300);
         // 注册整个窗口拖动事件
         addMoveEvent(primaryStage, ms);
@@ -56,7 +77,7 @@ public class Robot extends Application {
         // 初始調用controller
         primaryStage.show();
         stgMap.put(Robot.class.getSimpleName(), primaryStage);
-
+        log.info("Started robot successful.");
     }
 
     /**

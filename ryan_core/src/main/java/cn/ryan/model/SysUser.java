@@ -2,6 +2,8 @@ package cn.ryan.model;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class SysUser extends AbstractEntity implements Serializable {
 
     /**
@@ -117,4 +119,57 @@ public class SysUser extends AbstractEntity implements Serializable {
         this.lastLoginDate = lastLoginDate;
     }
 
+    /*--------common prop------------*/
+    private SysUser creatorUser;
+    private String createDate;
+    private SysUser modifierUser;
+    private String lastModifyDate;
+
+    @JsonIgnore
+    public SysUser getCreatorUser() {
+        return creatorUser;
+    }
+
+    public String getCreatorUserName() {
+        if (creatorUser != null) {
+            return creatorUser.getName();
+        }
+        return "";
+    }
+
+    public void setCreatorUser(SysUser creatorUser) {
+        this.creatorUser = creatorUser;
+    }
+
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
+
+    @JsonIgnore
+    public SysUser getModifierUser() {
+        return modifierUser;
+    }
+
+    public String getModifierUserName() {
+        if (modifierUser != null) {
+            return modifierUser.getName();
+        }
+        return "";
+    }
+
+    public void setModifierUser(SysUser modifierUser) {
+        this.modifierUser = modifierUser;
+    }
+
+    public String getLastModifyDate() {
+        return lastModifyDate;
+    }
+
+    public void setLastModifyDate(String lastModifyDate) {
+        this.lastModifyDate = lastModifyDate;
+    }
 }

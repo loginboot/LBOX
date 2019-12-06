@@ -17,10 +17,10 @@
 		<result column="LAST_LOGIN_DATE" property="lastLoginDate" jdbcType="VARCHAR" />
 		<result column="CREATE_DATE" property="createDate" jdbcType="VARCHAR" />
 		<result column="LAST_MODIFY_DATE" property="lastModifyDate" jdbcType="VARCHAR" />
-		<association column="CREATOR_ID" property="creatorUser" javaType="com.lyods.model.User"
-			select="com.lyods.dao.UserDao.findOne" />
-		<association column="MODIFIER_ID" property="modifierUser" javaType="com.lyods.model.User"
-			select="com.lyods.dao.UserDao.findOne" />
+		<association column="CREATOR_ID" property="creatorUser" javaType="cn.ryan.model.SysUser"
+			select="cn.ryan.dao.SysUserDao.findOne" />
+		<association column="MODIFIER_ID" property="modifierUser" javaType="cn.ryan.model.SysUser"
+			select="cn.ryan.dao.SysUserDao.findOne" />
 	</resultMap>
 
 	<!-- 根据ID返回一条记录 -->

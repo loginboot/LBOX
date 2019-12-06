@@ -9,11 +9,11 @@ import cn.ryan.model.AbstractEntity;
  * @author cn.ryan
  * @creator xiesw
  * @version 1.0.0
- * @date 2019-11-10
- * @description 文件索引
+ * @date 2019-12-04
+ * @description 爬蟲存儲文件信息表
  *
  */
-public class RbFileIndex extends AbstractEntity implements Serializable {
+public class RbWebData extends AbstractEntity implements Serializable {
 
     /**
      * ID
@@ -21,19 +21,13 @@ public class RbFileIndex extends AbstractEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private int id;
-
     private String fkey;
-
     private int fileType;
-
     private String fileName;
-
+    private String fileRealName;
     private String fileIndex;
-
     private String fileUpdateDate;
-
     private long fileSize;
-
     private int readTimes;
 
     public int getId() {
@@ -66,6 +60,14 @@ public class RbFileIndex extends AbstractEntity implements Serializable {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public String getFileRealName() {
+        return fileRealName;
+    }
+
+    public void setFileRealName(String fileRealName) {
+        this.fileRealName = fileRealName;
     }
 
     public String getFileIndex() {

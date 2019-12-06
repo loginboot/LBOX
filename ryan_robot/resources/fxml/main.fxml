@@ -18,7 +18,7 @@
 	</stylesheets>
 
 	<HBox styleClass="min-win-title" spacing="10" AnchorPane.leftAnchor="30" alignment="bottom_left">
-		<Text fx:id="chgTitle">Robot Hellow Web Ryan</Text>
+		<Text fx:id="chgTitle" text="%robot.title"/>
 	</HBox>
 	<VBox fx:id="blueFlame" styleClass="main-win-boll" AnchorPane.leftAnchor="20" AnchorPane.topAnchor="30"
 		prefHeight="60.0" prefWidth="60.0" onMouseClicked="#onShowMenu">

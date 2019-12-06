@@ -12,61 +12,52 @@ import cn.ryan.model.SysUser;
  * @author cn.ryan
  * @creator xiesw
  * @version 1.0.0
- * @date 2019-11-10
- * @description 目录路径树
+ * @date 2019-12-04
+ * @description 機器模型表
  *
  */
-public class RbFilePath extends AbstractEntity implements Serializable {
+public class RbRobotMode extends AbstractEntity implements Serializable {
 
     /**
      * ID
      */
     private static final long serialVersionUID = 1L;
 
-    private String fkey;
-    private RbRobotMode rmode;
-    private String pkey;
-    private String path;
-    private int level;
+    private int rbid;
+    private RbRobot mode;
+    private String mdesc;
+    private int status;
 
-    public String getFkey() {
-        return fkey;
+    public int getRbid() {
+        return rbid;
     }
 
-    public void setFkey(String fkey) {
-        this.fkey = fkey;
+    public void setRbid(int rbid) {
+        this.rbid = rbid;
     }
 
-    public String getPkey() {
-        return pkey;
+    public RbRobot getMode() {
+        return mode;
     }
 
-    public void setPkey(String pkey) {
-        this.pkey = pkey;
+    public void setMode(RbRobot mode) {
+        this.mode = mode;
     }
 
-    public String getPath() {
-        return path;
+    public String getMdesc() {
+        return mdesc;
     }
 
-    public void setPath(String path) {
-        this.path = path;
+    public void setMdesc(String mdesc) {
+        this.mdesc = mdesc;
     }
 
-    public int getLevel() {
-        return level;
+    public int getStatus() {
+        return status;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
-    public RbRobotMode getRmode() {
-        return rmode;
-    }
-
-    public void setRmode(RbRobotMode rmode) {
-        this.rmode = rmode;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     /*--------common prop------------*/

@@ -73,10 +73,13 @@
 }
 
 .login-win {
-	-fx-background-image: url("/img/bg.jpg");
+	-fx-background-image: url("/img/bg.png");
+}
+#welcome-text{
+	 -fx-font-size: 24px;
 }
 
-.button {
+.login-btn {
 	-fx-text-fill: white;
 	-fx-font-family: "Arial Narrow";
 	-fx-font-weight: bold;
@@ -84,6 +87,41 @@
 	-fx-effect: dropshadow(three-pass-box, rgba(0.0, 0.0, 0.0, 0.6), 5.0, 0.0, 0.0, 1.0);
 }
 
-.button:hover {
+.login-btn:hover {
 	-fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+/* Page BarTool CSS */
+.pg-barTool{}
+.pg-btn{
+	-fx-pref-width: 24.0;
+	-fx-pref-height: 24.0;
+	-fx-background-size: 100.0% 100.0%;
+}
+.pgn-last-left{
+	-fx-background-image: url("/img/pgn_last_left.png");
+}
+.pgn-left{
+	-fx-background-image: url("/img/pgn_left.png");
+}
+.pg-last-left{
+	-fx-background-image: url("/img/pg_last_left.png");
+}
+.pg-left{
+	-fx-background-image: url("/img/pg_left.png");
+}
+.pgn-last-right{
+	-fx-background-image: url("/img/pgn_last_right.png");
+}
+.pgn-right{
+	-fx-background-image: url("/img/pgn_right.png");
+}
+.pg-last-right{
+	-fx-background-image: url("/img/pg_last_right.png");
+}
+.pg-right{
+	-fx-background-image: url("/img/pg_right.png");
+}
+.pg-last-left:hover,.pg-left:hover, .pg-last-right:hover,.pg-right:hover{
+	-fx-cursor: hand;
 }

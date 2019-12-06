@@ -12,11 +12,11 @@ import cn.ryan.model.SysUser;
  * @author cn.ryan
  * @creator xiesw
  * @version 1.0.0
- * @date 2019-11-10
- * @description 目录路径树
+ * @date 2019-12-04
+ * @description 爬蟲存儲目錄表
  *
  */
-public class RbFilePath extends AbstractEntity implements Serializable {
+public class RbWebCrawler extends AbstractEntity implements Serializable {
 
     /**
      * ID
@@ -35,6 +35,14 @@ public class RbFilePath extends AbstractEntity implements Serializable {
 
     public void setFkey(String fkey) {
         this.fkey = fkey;
+    }
+
+    public RbRobotMode getRmode() {
+        return rmode;
+    }
+
+    public void setRmode(RbRobotMode rmode) {
+        this.rmode = rmode;
     }
 
     public String getPkey() {
@@ -59,14 +67,6 @@ public class RbFilePath extends AbstractEntity implements Serializable {
 
     public void setLevel(int level) {
         this.level = level;
-    }
-
-    public RbRobotMode getRmode() {
-        return rmode;
-    }
-
-    public void setRmode(RbRobotMode rmode) {
-        this.rmode = rmode;
     }
 
     /*--------common prop------------*/

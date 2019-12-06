@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ryan.dao.rb.RbRobotDao">
+	<!-- 返回结果集封装对象 -->
+	<resultMap id="robotMap" type="cn.ryan.model.rb.RbRobot">
+		<result column="MODE" property="mode" jdbcType="VARCHAR" />
+		<result column="LABEL" property="label" jdbcType="VARCHAR" />
+		<result column="SKEy" property="skey" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 根据ID返回一条记录 -->
+	<select id="findOne" resultMap="robotMap" parameterType="java.lang.String">
+		SELECT * FROM T_RB_ROBOT WHERE MODE=#{mode}
+	</select>
+
+	<!-- 返回所有记录 -->
+	<select id="findAll" resultMap="robotMap">
+		SELECT * FROM T_RB_ROBOT ORDER BY SKEY
+	</select>
+</mapper>

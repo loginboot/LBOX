@@ -2,27 +2,26 @@ package cn.ryan.robot;
 
 import java.net.URL;
 
-import cn.ryan.utils.RyanLangUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class RobotLogin extends Application {
+public class RobotSetupList extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // 设置标题
-        primaryStage.setTitle(RyanLangUtil.getMsgByCode("robot.login"));
-        URL ur = getClass().getResource("/fxml/login.fxml");
-        Pane lgn = FXMLLoader.load(ur, RyanLangUtil.getResBundle());
-        Scene ms = new Scene(lgn, 400, 240);
+        primaryStage.setTitle("Model Example");
+        URL ur = getClass().getResource("/fxml/setupList.fxml");
+        Pane lgn = FXMLLoader.load(ur);
+
+        Scene ms = new Scene(lgn, 620, 300);
         primaryStage.setScene(ms);
-        primaryStage.setResizable(false);
+
         // 初始調用controller
         primaryStage.show();
-        Robot.stgMap.put(RobotLogin.class.getSimpleName(), primaryStage);
+        Robot.stgMap.put(RobotSetupList.class.getSimpleName(), primaryStage);
     }
 
     public void show() {
@@ -32,5 +31,9 @@ public class RobotLogin extends Application {
         } catch (Exception e) {
             // TODO: handle exception
         }
+    }
+    
+    public static void main(String[] args) {
+        launch(args);
     }
 }

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import cn.ryan.robot.gui.*?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.text.*?>
+
+<!-- fx:controller="com.chu.helloworld.FXMLExampleController" -->
+<GridPane fx:controller="cn.ryan.robot.gui.RobotSetupListCtrl" xmlns:fx="http://javafx.com/fxml"
+	alignment="center">
+	<padding>
+		<Insets top="10" right="10" bottom="10" left="10" />
+	</padding>
+	<!-- 第一行標題 -->
+	<Text id="welcome-text" text="Welcome" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" />
+	<!-- 第二行表格 -->
+	<VBox alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="1">
+		<TableView fx:id="robotModes">
+			<columns>
+				<TableColumn fx:id="rbid" prefWidth="75.0" text="ID" />
+				<TableColumn fx:id="mode" prefWidth="175.0" text="Mode Name" />
+				<TableColumn fx:id="mdesc" prefWidth="375.0" text="Desc" />
+			</columns>
+			<columnResizePolicy>
+				<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+			</columnResizePolicy>
+		</TableView>
+		<!-- 分頁工具 -->
+		<HBox spacing="5" alignment="center_left">
+			<padding>
+				<Insets top="5" />
+			</padding>
+			<Label>
+				<styleClass>
+					<String fx:value="pg-btn" />
+					<String fx:value="pgn-last-left" />
+				</styleClass>
+			</Label>
+			<Label>
+				<styleClass>
+					<String fx:value="pg-btn" />
+					<String fx:value="pgn-left" />
+				</styleClass>
+			</Label>
+			<Text>Page</Text>
+			<TextField prefWidth="40" text="1" />
+			<Text>of</Text>
+			<Text>3</Text>
+			<ComboBox fx:id="pgBox" editable="false" prefWidth="60" promptText="" onAction="#onclickComboBox">
+				<items>
+					<FXCollections fx:factory="observableArrayList">
+						<Integer fx:value="5" />
+						<Integer fx:value="10" />
+						<Integer fx:value="20" />
+						<Integer fx:value="50" />
+					</FXCollections>
+				</items>
+				<value>
+					<Integer fx:value="10" />
+				</value>
+			</ComboBox>
+			<Label>
+				<styleClass>
+					<String fx:value="pg-btn" />
+					<String fx:value="pg-right" />
+				</styleClass>
+			</Label>
+			<Label>
+				<styleClass>
+					<String fx:value="pg-btn" />
+					<String fx:value="pg-last-right" />
+				</styleClass>
+			</Label>
+		</HBox>
+	</VBox>
+	<HBox spacing="10" alignment="bottom_right" GridPane.columnIndex="0" GridPane.rowIndex="2">
+		<padding>
+			<Insets top="10" />
+		</padding>
+		<Button text="Add" />
+		<Button text="Upd" />
+		<Button text="Del" />
+		<Button text="View" />
+	</HBox>
+	<stylesheets>
+		<URL value="@/css/robot.css" />
+	</stylesheets>
+</GridPane>

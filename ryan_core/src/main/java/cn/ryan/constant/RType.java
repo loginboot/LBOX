@@ -10,11 +10,11 @@ package cn.ryan.constant;
  */
 public class RType {
 
-    // 机器人文件索引
+    // 机器人文件索引FILE_INDEX
     public static String RB_TYPE_FI = "FILE_INDEX";
-    // 机器人双色球
+    // 机器人双色球COLOR_BOLL
     public static String RB_TYPE_CB = "COLOR_BOLL";
-    // 机器人网络爬虫
+    // 机器人网络爬虫WEB_CRAWLER
     public static String RB_TYPE_WC = "WEB_CRAWLER";
 
 }

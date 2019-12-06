@@ -27,6 +27,7 @@
 		<spring.version>5.2.1.RELEASE</spring.version>
 		<!-- servlet -->
 		<servlet.version>2.5</servlet.version>
+		<derby.version>10.13.1.1</derby.version>
 	</properties>
 	<!-- 包引用说明 -->
 	<dependencyManagement>
@@ -117,6 +118,12 @@
 				<artifactId>commons-text</artifactId>
 				<version>${text.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.apache.derby</groupId>
+				<artifactId>derby</artifactId>
+				<version>${derby.version}</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 </project>

@@ -12,53 +12,34 @@ import cn.ryan.model.SysUser;
  * @author cn.ryan
  * @creator xiesw
  * @version 1.0.0
- * @date 2019-11-10
- * @description 目录路径树
+ * @date 2019-12-04
+ * @description 彩票表
  *
  */
-public class RbFilePath extends AbstractEntity implements Serializable {
+public class RbColorBall extends AbstractEntity implements Serializable {
 
     /**
      * ID
      */
     private static final long serialVersionUID = 1L;
 
-    private String fkey;
+    private int id;
     private RbRobotMode rmode;
-    private String pkey;
-    private String path;
-    private int level;
+    private String bdesc;
+    private String rball;
+    private int status;
+    private int prizeStatus;
+    private int prizeDate;
+    private String rmk1;
+    private String rmk2;
+    private String rmk3;
 
-    public String getFkey() {
-        return fkey;
+    public int getId() {
+        return id;
     }
 
-    public void setFkey(String fkey) {
-        this.fkey = fkey;
-    }
-
-    public String getPkey() {
-        return pkey;
-    }
-
-    public void setPkey(String pkey) {
-        this.pkey = pkey;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public RbRobotMode getRmode() {
@@ -67,6 +48,70 @@ public class RbFilePath extends AbstractEntity implements Serializable {
 
     public void setRmode(RbRobotMode rmode) {
         this.rmode = rmode;
+    }
+
+    public String getBdesc() {
+        return bdesc;
+    }
+
+    public void setBdesc(String bdesc) {
+        this.bdesc = bdesc;
+    }
+
+    public String getRball() {
+        return rball;
+    }
+
+    public void setRball(String rball) {
+        this.rball = rball;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public int getPrizeStatus() {
+        return prizeStatus;
+    }
+
+    public void setPrizeStatus(int prizeStatus) {
+        this.prizeStatus = prizeStatus;
+    }
+
+    public int getPrizeDate() {
+        return prizeDate;
+    }
+
+    public void setPrizeDate(int prizeDate) {
+        this.prizeDate = prizeDate;
+    }
+
+    public String getRmk1() {
+        return rmk1;
+    }
+
+    public void setRmk1(String rmk1) {
+        this.rmk1 = rmk1;
+    }
+
+    public String getRmk2() {
+        return rmk2;
+    }
+
+    public void setRmk2(String rmk2) {
+        this.rmk2 = rmk2;
+    }
+
+    public String getRmk3() {
+        return rmk3;
+    }
+
+    public void setRmk3(String rmk3) {
+        this.rmk3 = rmk3;
     }
 
     /*--------common prop------------*/
@@ -122,5 +167,4 @@ public class RbFilePath extends AbstractEntity implements Serializable {
     public void setLastModifyDate(String lastModifyDate) {
         this.lastModifyDate = lastModifyDate;
     }
-
 }

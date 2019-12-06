@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ryan.dao.rb.RbRobotModeDao">
+	<!-- 返回结果集封装对象 -->
+	<resultMap id="robotModeMap" type="cn.ryan.model.rb.RbRobotMode">
+		<id column="RBID" property="rbid" jdbcType="INTEGER" />
+		<result column="MDESC" property="mdesc" jdbcType="VARCHAR" />
+		<result column="STATUS" property="status" jdbcType="INTEGER" />
+		<result column="CREATE_DATE" property="createDate" jdbcType="VARCHAR" />
+		<result column="LAST_MODIFY_DATE" property="lastModifyDate" jdbcType="VARCHAR" />
+		<association column="MODE" property="mode" javaType="cn.ryan.model.rb.RbRobot"
+			select="cn.ryan.dao.rb.RbRobotDao.findOne" />
+		<association column="CREATOR_ID" property="creatorUser" javaType="cn.ryan.model.SysUser"
+			select="cn.ryan.dao.SysUserDao.findOne" />
+		<association column="MODIFIER_ID" property="modifierUser" javaType="cn.ryan.model.SysUser"
+			select="cn.ryan.dao.SysUserDao.findOne" />
+	</resultMap>
+
+	<!-- 根据ID返回一条记录 -->
+	<select id="findOne" resultMap="robotModeMap" parameterType="java.lang.Integer">
+		SELECT * FROM T_RB_ROBOT_MODE WHERE RBID=#{id}
+	</select>
+
+
+</mapper>
