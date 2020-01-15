@@ -1,5 +1,7 @@
 package cn.ryan.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import cn.ryan.utils.JsonMapper;
 
 /**
@@ -15,9 +17,20 @@ import cn.ryan.utils.JsonMapper;
 
 public abstract class AbstractEntity {
 
-	@Override
-	public String toString() {
-		JsonMapper mapper = new JsonMapper();
-		return mapper.toJson(this);
-	}
+    private long csize;
+
+    @Override
+    public String toString() {
+        JsonMapper mapper = new JsonMapper();
+        return mapper.toJson(this);
+    }
+
+    @JsonIgnore
+    public long getCsize() {
+        return csize;
+    }
+
+    public void setCsize(long csize) {
+        this.csize = csize;
+    }
 }

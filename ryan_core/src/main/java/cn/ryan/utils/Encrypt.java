@@ -20,8 +20,8 @@ import org.apache.commons.codec.binary.Base64;
 public class Encrypt {
 
     private static Key key;
-    private static String strKey = "**LyodsDESForFircoTrust==";
-    private static String aesStrKey = "**LyodssoftAES=="; // 只能16位整數
+    private static String strKey = "##RYAN##DES##***";
+    private static String aesStrKey = "##RYAN##AES##***"; // 只能16位整數
 
     static {
         try {

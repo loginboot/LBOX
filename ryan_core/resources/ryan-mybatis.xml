@@ -6,7 +6,7 @@
 <configuration>
 
 	<plugins>
-		<plugin interceptor="com.lyods.mybatis.utils.PagePlugin">
+		<plugin interceptor="cn.ryan.mybatis.utils.PagePlugin">
 			<property name="dialect" value="sqlserver" />
 			<property name="pageSqlId" value=".*findByPage*.*" />
 		</plugin>

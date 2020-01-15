@@ -27,15 +27,15 @@
 	</select>
 
 	<!-- 新增一笔记录 -->
-	<insert id="save" parameterMap="fileIndexMap">
+	<insert id="save" parameterType="cn.ryan.model.rb.RbFileIndex">
 		<![CDATA[
 		INSERT INTO T_RB_FILE_INDEX(PKEY,FILE_TYPE,FILE_NAME,FILE_INDEX,FILE_UPDATE_DATE,FILE_SIZE,READ_TIMES)
 		VALUES(#{pkey},#{fileType},#{fileName},#{fileIndex},#{fileUpdateDate},#{fileSize},#{readTimes})
 		]]>
 	</insert>
-	
-	<update id="update" parameterMap="fileIndexMap">
-	
+
+	<update id="update" parameterType="cn.ryan.model.rb.RbFileIndex">
+
 	</update>
 
 	<!-- 删除一笔记录 -->

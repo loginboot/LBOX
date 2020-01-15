@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ryan.dao.SysSessionDao">
+
+	<!-- 返回结果集封装对象 -->
+	<resultMap id="sysSessionMap" type="cn.ryan.model.SysSession">
+		<id column="USERID" property="userId" jdbcType="INTEGER" />
+		<result column="SESSIONID" property="sessionId" jdbcType="VARCHAR" />
+		<result column="LAST_OP_TIME" property="lastOpTime" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 根据最后操作日期返回对应结果 -->
+	<select id="findByLastOpTime" resultMap="sysSessionMap" parameterType="java.lang.String">
+		<![CDATA[ 
+			SELECT * FROM T_SYS_SESSION WHERE LAST_OP_TIME<=#{optime}
+		]]>
+	</select>
+
+	<!-- 根据用户ID返回一条记录 -->
+	<select id="findOne" resultMap="sysSessionMap" parameterType="java.lang.Integer">
+		<![CDATA[ 
+			SELECT * FROM T_SYS_SESSION WHERE USERID=#{userId}
+		]]>
+	</select>
+
+	<!-- 删除已经超时的数据 -->
+	<delete id="deleteTimeoutSession" parameterType="java.lang.String">
+		<![CDATA[ 
+			DELETE FROM T_SYS_SESSION WHERE LAST_OP_TIME<=#{lastAccessTime}
+		]]>
+	</delete>
+
+	<!-- 删除指定用户在线记录 -->
+	<delete id="delete" parameterType="java.lang.Integer">
+		<![CDATA[ 
+			DELETE FROM T_SYS_SESSION WHERE USERID=#{userId}
+		]]>
+	</delete>
+
+	<!-- 返回所有记录 -->
+	<select id="findAll" resultMap="sysSessionMap">
+		<![CDATA[ 
+			SELECT * FROM T_SYS_SESSION
+		]]>
+	</select>
+
+	<!-- 保存或更新一笔记录 -->
+	<insert id="saveOrUpdate" parameterType="cn.ryan.model.SysSession">
+		<selectKey keyProperty="csize" resultType="int" order="BEFORE">
+			SELECT COUNT(*) csize FROM T_SYS_SESSION WHERE
+			USERID=#{userId}
+		</selectKey>
+		<!-- 如果大于0则更新 -->
+		<if test="csize>0">
+			UPDATE T_SYS_SESSION SET SESSIONID=#{sessionId},LAST_OP_TIME=#{lastOpTime} WHERE USERID=#{userId}
+		</if>
+		<!-- 如果等于0则保存 -->
+		<if test="csize==0">
+			INSERT INTO T_SYS_SESSION(USERID,LAST_OP_TIME,SESSIONID)
+			VALUES(#{userId},#{lastOpTime},#{sessionId})
+		</if>
+	</insert>
+
+</mapper>

@@ -50,7 +50,7 @@ public class EncryptFrame extends JFrame {
     }
 
     private JLabel jtxt;
-    private JComboBox jcbox;
+    private JComboBox<String> jcbox;
 
     private JLabel pwdLabel;
     private JLabel eptLabel;
@@ -70,9 +70,10 @@ public class EncryptFrame extends JFrame {
         init();
     }
 
+    @SuppressWarnings("all")
     private void init() {
         this.setSize(500, 200);
-        this.setTitle("Lyods Encryption");
+        this.setTitle("Ryan Encryption");
         this.setResizable(false);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 
@@ -150,9 +151,9 @@ public class EncryptFrame extends JFrame {
         return content;
     }
 
-    private JComboBox getDrawBox() {
+    private JComboBox<String> getDrawBox() {
         if (jcbox == null) {
-            DefaultComboBoxModel fruitsName = new DefaultComboBoxModel();
+            DefaultComboBoxModel<String> fruitsName = new DefaultComboBoxModel<String>();
             fruitsName.addElement("Encrypt");
             if (isDec) {
                 fruitsName.addElement("Decrypt");
@@ -162,7 +163,7 @@ public class EncryptFrame extends JFrame {
                 fruitsName.addElement("DecryptAES");
             }
 
-            jcbox = new JComboBox(fruitsName);
+            jcbox = new JComboBox<String>(fruitsName);
             jcbox.setSelectedIndex(0);
 
             jcbox.addActionListener(new ActionListener() {

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ryan.dao.SysLogDao">
+
+	<!-- 返回结果集封装对象 -->
+	<resultMap id="sysLogMap" type="cn.ryan.model.SysLog">
+		<id column="LID" property="lid" jdbcType="INTEGER" />
+		<result column="OPER_TIME" property="operTime" jdbcType="VARCHAR" />
+		<result column="TYPE" property="type" jdbcType="INTEGER" />
+		<result column="HOST" property="host" jdbcType="VARCHAR" />
+		<result column="PERMISSION" property="permission" jdbcType="VARCHAR" />
+		<result column="DETAILS" property="details" jdbcType="VARCHAR" />
+		<association column="USERID" property="user" javaType="cn.ryan.model.SysUser"
+			select="cn.ryan.dao.SysUserDao.findOne" />
+	</resultMap>
+
+	<!-- 共用查詢SQL -->
+	<sql id="selConSql">
+		SELECT a.* FROM T_SYS_LOG a WHERE 1=1
+	</sql>
+
+	<!-- 返回分頁數據 -->
+	<select id="findByPage" resultMap="sysLogMap" parameterType="map">
+		<include refid="selConSql" />
+		<if test="EQ_permission!='' and EQ_permission!=null">AND a.PERMISSION=#{EQ_permission} </if>
+		<if test="EQ_type!='' and EQ_type!=null">AND a.TYPE=#{EQ_type} </if>
+		<if test="RIGHTLIKE_userName!='' and RIGHTLIKE_userName!=null">
+			AND EXISTS(SELECT 1 FROM T_SYS_USER u WHERE u.USERID=a.USERID AND u.NAME LIKE
+			CONCAT(#{RIGHTLIKE_userName},'%')) </if>
+		<if test="RIGHTLIKE_details!='' and RIGHTLIKE_details!=null">AND a.DETAILS LIKE CONCAT(#{RIGHTLIKE_details},'%') </if>
+		ORDER BY a.OPER_TIME DESC, a.LID
+	</select>
+
+	<!-- 保存一笔记录 -->
+	<insert id="save" parameterType="cn.ryan.model.SysLog" useGeneratedKeys="true" keyProperty="lid">
+		INSERT INTO
+		T_SYS_LOG(USERID,OPER_TIME,TYPE,HOST,PERMISSION,DETAILS)
+		VALUES(#{user.userId},#{operTime},#{type},#{host},#{permission},#{details})
+	</insert>
+
+	<!-- 更新一筆記錄 -->
+	<update id="update" parameterType="cn.ryan.model.SysLog">
+		UPDATE T_SYS_LOG SET USERID=#{user.userId},OPER_TIME=#{operTime},TYPE=#{type},
+		HOST=#{host},PERMISSION=#{permission},DETAILS=#{details} WHERE LID=#{lid}
+	</update>
+
+	<!-- 根据ID返回一条记录 -->
+	<select id="findOne" resultMap="sysLogMap" parameterType="java.lang.Integer">
+		<include refid="selConSql" />
+		AND a.LID=#{id}
+	</select>
+
+</mapper>

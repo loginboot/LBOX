@@ -28,5 +28,9 @@
 		SELECT * FROM T_SYS_USER WHERE USERID=#{id}
 	</select>
 
-
+	<!-- 根据用户名称返回字段内容 -->
+	<select id="findUserByLoginName" resultMap="sysUserMap" parameterType="java.lang.String">
+		SELECT * FROM T_SYS_USER WHERE
+		LOGIN_NAME=#{loginName}
+	</select>
 </mapper>

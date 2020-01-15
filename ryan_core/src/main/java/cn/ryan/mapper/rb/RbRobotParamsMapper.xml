@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ryan.dao.rb.RbRobotParamsDao">
+	<!-- 返回结果集封装对象 -->
+	<resultMap id="robotParamsMap" type="cn.ryan.model.rb.RbRobotParams">
+		<id column="RPID" property="rpid" jdbcType="INTEGER" />
+		<result column="RP_NAME" property="rpName" jdbcType="VARCHAR" />
+		<result column="RP_VALUE" property="rpValue" jdbcType="VARCHAR" />
+		<result column="RP_DESC" property="rpDesc" jdbcType="VARCHAR" />
+		<association column="RMID" property="rmode" javaType="cn.ryan.model.rb.RbRobotMode"
+			select="cn.ryan.dao.rb.RbRobotModeDao.findOne" />
+	</resultMap>
+
+	<!-- 保存机器参数详细记录 -->
+	<insert id="savelist" parameterType="java.util.List">
+		INSERT INTO T_RB_ROBOT_PARAMS (RMID,RP_NAME,RP_VALUE,RP_DESC) VALUES
+		<foreach collection="rps" item="item" index="index" separator=",">
+			(#{rmode.rbid},#{rpName},#{rpValue},#{rpDesc})
+		</foreach>
+	</insert>
+
+	<!-- 根据主ID删除所有参数内容 -->
+	<delete id="deleteByRbId" parameterType="java.lang.Integer">
+		DELETE FROM T_RB_ROBOT_PARAMS WHERE RBID=#{rbid}
+	</delete>
+
+</mapper>

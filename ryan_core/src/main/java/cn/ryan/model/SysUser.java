@@ -4,6 +4,15 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * 
+ * @author ryan.cn
+ * @creator xiesw
+ * @version 1.0.0
+ * @date 2020-01-14
+ * @description 系统用户表实体类
+ *
+ */
 public class SysUser extends AbstractEntity implements Serializable {
 
     /**

@@ -17,4 +17,15 @@ public class RConstant {
     // 默认分页笔数
     public static final int DEFAULT_PAGE_SIZE = 10;
 
+    // 输入错误密码次数超过最大允许次数
+    public static final Integer USER_PWD_LOCK = 1;
+    // 密码超过有效期
+    public static final Integer USER_PWD_HAS_EXPIRED = 2;
+    // 账户超过登录最小到期天数
+    public static final Integer USER_ACCOUNT_EXPIRE = 3;
+
+    // HASH编码类型
+    public static final String HASH_ALGORITHM = "SHA-256";
+    public static final int HASH_INTERATIONS = 256;
+
 }

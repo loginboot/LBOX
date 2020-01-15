@@ -16,10 +16,36 @@
 			select="cn.ryan.dao.SysUserDao.findOne" />
 	</resultMap>
 
+	<!-- 返回分页查询列表 -->
+	<select id="findByPage" resultMap="robotModeMap" parameterType="map">
+		SELECT m.* FROM T_RB_ROBOT_MODE m WHERE 1=1
+		<if test="EQ_status!=''">AND m.STATUS=#{EQ_status} </if>
+		<if test="EQ_mode!='' and EQ_mode!=null">AND m.MODE=#{EQ_mode}</if>
+		ORDER BY m.RBID
+	</select>
+
 	<!-- 根据ID返回一条记录 -->
 	<select id="findOne" resultMap="robotModeMap" parameterType="java.lang.Integer">
 		SELECT * FROM T_RB_ROBOT_MODE WHERE RBID=#{id}
 	</select>
 
+	<!-- 新增一笔记录 -->
+	<insert id="save" parameterType="cn.ryan.model.rb.RbRobotMode" useGeneratedKeys="true" keyProperty="rbid"
+		keyColumn="RBID">
+		INSERT INTO T_RB_ROBOT_MODE (MODE,MDESC,STATUS,CREATE_DATE,CREATOR_ID,LAST_MODIFY_DATE,MODIFIER_ID)
+		VALUES(#{mode.mode},#{mdesc},#{status},#{createDate},#{creatorUser.userId},#{lastModifyDate},#{modifierUser.userId})
+	</insert>
+
+	<!-- 修改一笔记录 -->
+	<update id="update" parameterType="cn.ryan.model.rb.RbRobotMode">
+		UPDATE T_RB_ROBOT_MODE SET
+		MODE=#{mode.mode},MDESC=#{mdesc},STATUS=#{status},MODIFIER_ID=#{modifierUser.userId},
+		LAST_MODIFY_DATE=#{lastModifyDate} WHERE RBID=#{rbid}
+	</update>
+
+	<!-- 删除一笔记录 -->
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM T_RB_ROBOT_MODE WHERE RBID=#{rbid}
+	</delete>
 
 </mapper>

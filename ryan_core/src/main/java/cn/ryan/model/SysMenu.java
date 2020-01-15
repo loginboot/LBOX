@@ -2,6 +2,15 @@ package cn.ryan.model;
 
 import java.io.Serializable;
 
+/**
+ * 
+ * @author ryan.cn
+ * @creator xiesw
+ * @version 1.0.0
+ * @date 2020-01-14
+ * @description 系统菜单表实体类
+ *
+ */
 public class SysMenu extends AbstractEntity implements Serializable {
 
     /**
