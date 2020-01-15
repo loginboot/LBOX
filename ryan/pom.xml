@@ -23,8 +23,13 @@
 		<text.version>1.8</text.version>
 		<!-- mybatis -->
 		<mybatis.version>3.5.3</mybatis.version>
+		<mybatis.spring.version>2.0.3</mybatis.spring.version>
 		<!-- spring -->
 		<spring.version>5.2.1.RELEASE</spring.version>
+		<aop.version>1.0</aop.version>
+		<aspect.version>1.9.5</aspect.version>
+		<!-- Shiro -->
+		<shiro.version>1.4.2</shiro.version>
 		<!-- servlet -->
 		<servlet.version>2.5</servlet.version>
 		<derby.version>10.13.1.1</derby.version>
@@ -68,10 +73,23 @@
 				<artifactId>mybatis</artifactId>
 				<version>${mybatis.version}</version>
 			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-spring</artifactId>
+				<version>${mybatis.spring.version}</version>
+			</dependency>
+
 			<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
 			<!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
@@ -98,6 +116,33 @@
 				<artifactId>spring-webmvc</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/aopalliance/aopalliance -->
+			<dependency>
+				<groupId>aopalliance</groupId>
+				<artifactId>aopalliance</artifactId>
+				<version>${aop.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjrt -->
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjrt</artifactId>
+				<version>${aspect.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>${aspect.version}</version>
+			</dependency>
+
+
 			<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
 			<dependency>
 				<groupId>javax.servlet</groupId>
@@ -105,6 +150,27 @@
 				<version>${servlet.version}</version>
 				<scope>provided</scope>
 			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-core -->
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-core</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-spring -->
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-spring</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-ehcache -->
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-ehcache</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+
+
 
 			<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
 			<dependency>
