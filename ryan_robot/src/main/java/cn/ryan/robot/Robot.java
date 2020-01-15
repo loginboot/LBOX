@@ -19,6 +19,15 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * 
+ * @author cn.ryan.robot
+ * @creator xiesw
+ * @version 1.0.0
+ * @date 2020-01-09
+ * @description Ryan機器人圖形頁面加載啟動主類
+ *
+ */
 public class Robot extends Application {
 
     /**
@@ -37,6 +46,10 @@ public class Robot extends Application {
     private double x_stage;
     private double y_stage;
 
+    /**
+     * Robot啟動入口
+     * @param args
+     */
     public static void main(String[] args) {
         String lang = "zh_CN";
         // 讀取參數

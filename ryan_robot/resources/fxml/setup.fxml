@@ -9,48 +9,46 @@
 <?import javafx.scene.text.*?>
 <?import javafx.collections.*?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
 
 <!-- fx:controller="com.chu.helloworld.FXMLExampleController" -->
-<GridPane fx:controller="cn.ryan.robot.gui.RobotSetupCtrl" xmlns:fx="http://javafx.com/fxml" alignment="top_center"
-	hgap="2" vgap="4" >
+<GridPane fx:controller="cn.ryan.robot.gui.RobotSetupCtrl" xmlns:fx="http://javafx.com/fxml"
+	alignment="top_center" hgap="2" vgap="4">
 	<padding>
-		<Insets top="25" right="25" bottom="10" left="25" />
+		<Insets top="10" right="25" bottom="10" left="25" />
 	</padding>
 	<!-- 第一行標題 -->
-	<Text id="welcome-text" text="Welcome" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+	<Text id="welcome-text" text="%robot.param" GridPane.columnIndex="0" GridPane.rowIndex="0" />
 	<!-- 第二行類型 -->
-	<Label text="Type Name:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-	<ComboBox fx:id="mdBox" editable="false" prefWidth="60" promptText="" GridPane.columnIndex="1"
-		GridPane.rowIndex="1">
-		<items>
-			<FXCollections fx:factory="observableArrayList">
-				<Integer fx:value="5" />
-				<Integer fx:value="10" />
-				<Integer fx:value="20" />
-				<Integer fx:value="50" />
-			</FXCollections>
-		</items>
-		<value>
-			<Integer fx:value="10" />
-		</value>
+	<Label text="%robot.mode" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+	<ComboBox fx:id="mdBox" editable="false" prefWidth="120" promptText="" GridPane.columnIndex="1"
+		GridPane.rowIndex="1" onAction="#onclickMode">
 	</ComboBox>
 	<!-- 描述 -->
-	<Label textAlignment="right" GridPane.columnIndex="0" GridPane.rowIndex="2">Desc</Label>
-	<TextArea fx:id="mdesc" GridPane.columnIndex="1" GridPane.rowIndex="2" prefHeight="80.0" prefWidth="480.0"
+	<Label textAlignment="right" text="%robot.desc" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+	<TextArea fx:id="mdesc" GridPane.columnIndex="1" GridPane.rowIndex="2" prefHeight="80.0" prefWidth="580.0"
 		wrapText="true" />
 	<!-- 參數設定 -->
-	<Label GridPane.columnIndex="0" GridPane.rowIndex="3">DESC</Label>
 	<VBox GridPane.columnIndex="1" GridPane.rowIndex="3">
-		<HBox spacing="20">
-			<Label></Label>
-			<Label prefWidth="150">Name</Label>
-			<Label>Value</Label>
+		<HBox spacing="20" alignment="center_left">
+			<Label onMouseClicked="#addParamSet">
+				<styleClass>
+					<String fx:value="png-btn" />
+					<String fx:value="png-btn-add" />
+				</styleClass>
+			</Label>
+			<Label prefWidth="160" text="%robot.paramName" />
+			<Label prefWidth="160" text="%robot.paramValue" />
+			<Label text="%PUB.desc" />
 		</HBox>
+		<VBox fx:id="mpox">
+
+		</VBox>
 	</VBox>
 	<!-- 按鈕 -->
 	<HBox spacing="10" alignment="center_left" GridPane.columnIndex="1" GridPane.rowIndex="4">
-		<Button text="Ok"/>
-		<Button text="Cancel"/>
+		<Button styleClass="btn-ok" text="%PUB.ok" onAction="#saveRbParams" />
+		<Button styleClass="btn-cancel" text="%PUB.cancel" onAction="#cancelRbParams" />
 	</HBox>
 
 	<stylesheets>

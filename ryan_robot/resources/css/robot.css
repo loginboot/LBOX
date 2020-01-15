@@ -76,7 +76,7 @@
 	-fx-background-image: url("/img/bg.png");
 }
 #welcome-text{
-	 -fx-font-size: 24px;
+	 -fx-font-size: 24.0px;
 }
 
 .login-btn {
@@ -124,4 +124,51 @@
 }
 .pg-last-left:hover,.pg-left:hover, .pg-last-right:hover,.pg-right:hover{
 	-fx-cursor: hand;
+}
+
+/* PNG for button */
+.png-btn{
+	-fx-pref-width: 24.0;
+	-fx-pref-height: 24.0;
+	-fx-background-size: 100.0% 100.0%;
+}
+.png-btn-add{
+	-fx-background-image: url("/img/add.png");
+}
+.png-btn-del{
+	-fx-background-image: url("/img/del.png");
+}
+.png-btn-add:hover,.png-btn-del:hover{
+	-fx-cursor: hand;
+}
+.btn-ok{
+	-fx-text-fill: white;
+	-fx-font-family: "Arial Narrow";
+	-fx-font-weight: bold;
+	-fx-padding: 6.0 10.0;
+	-fx-background-color: linear-gradient(#007bff, #3B9DFF);
+	-fx-effect: dropshadow(three-pass-box, rgba(0.0, 0.0, 0.0, 0.6), 5.0, 0.0, 0.0, 1.0);
+}
+.btn-cancel{
+	-fx-text-fill: white;
+	-fx-font-family: "Arial Narrow";
+	-fx-font-weight: bold;
+	-fx-padding: 6.0 10.0;
+	-fx-background-color: linear-gradient(#6c757d, #9E9E9E);
+	-fx-effect: dropshadow(three-pass-box, rgba(0.0, 0.0, 0.0, 0.6), 5.0, 0.0, 0.0, 1.0);
+}
+.btn-ok:hover{
+	-fx-cursor: hand;
+	-fx-background-color: linear-gradient(#3B9DFF, #007bff);
+}
+.btn-cancel:hover{
+	-fx-cursor: hand;
+	-fx-background-color: linear-gradient(#9E9E9E, #6c757d);
+}
+
+#mdBox Text{-fx-fill:red;-fx-background-color: green;}
+#mdBox {
+     -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, white;
+    -fx-background-insets: 0.0 0.0 -1.0 0.0, 0.0, 1.0, 2.0;
+    -fx-background-radius: 3.0px, 3.0px, 2.0px, 1.0px;
 }
