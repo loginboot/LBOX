@@ -8,8 +8,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.collections.*?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.HBox?>
 
 <!-- fx:controller="com.chu.helloworld.FXMLExampleController" -->
 <GridPane fx:controller="cn.ryan.robot.gui.RobotSetupCtrl" xmlns:fx="http://javafx.com/fxml"
