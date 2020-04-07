@@ -11,7 +11,7 @@
 
 <!-- fx:controller="com.chu.helloworld.FXMLExampleController" -->
 <GridPane fx:controller="cn.ryan.robot.gui.RobotSetupCtrl" xmlns:fx="http://javafx.com/fxml"
-	alignment="top_center" hgap="2" vgap="4">
+	alignment="top_center" hgap="2" vgap="5">
 	<padding>
 		<Insets top="10" right="25" bottom="10" left="25" />
 	</padding>
@@ -22,12 +22,18 @@
 	<ComboBox fx:id="mdBox" editable="false" prefWidth="120" promptText="" GridPane.columnIndex="1"
 		GridPane.rowIndex="1" onAction="#onclickMode">
 	</ComboBox>
+	<!-- 第三行狀態 -->
+	<Label text="%PUB.status" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+	<ComboBox fx:id="statusBox" editable="false" prefWidth="120" promptText="" GridPane.columnIndex="1"
+		GridPane.rowIndex="2" onAction="#onclickStatus">
+		
+	</ComboBox>
 	<!-- 描述 -->
-	<Label textAlignment="right" text="%robot.desc" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-	<TextArea fx:id="mdesc" GridPane.columnIndex="1" GridPane.rowIndex="2" prefHeight="80.0" prefWidth="580.0"
+	<Label textAlignment="right" text="%robot.desc" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+	<TextArea fx:id="mdesc" GridPane.columnIndex="1" GridPane.rowIndex="3" prefHeight="80.0" prefWidth="580.0"
 		wrapText="true" />
 	<!-- 參數設定 -->
-	<VBox GridPane.columnIndex="1" GridPane.rowIndex="3">
+	<VBox GridPane.columnIndex="1" GridPane.rowIndex="4">
 		<HBox spacing="20" alignment="center_left">
 			<Label onMouseClicked="#addParamSet">
 				<styleClass>
@@ -39,12 +45,12 @@
 			<Label prefWidth="160" text="%robot.paramValue" />
 			<Label text="%PUB.desc" />
 		</HBox>
-		<VBox fx:id="mpox">
+		<VBox fx:id="mpox" spacing="5">
 
 		</VBox>
 	</VBox>
 	<!-- 按鈕 -->
-	<HBox spacing="10" alignment="center_left" GridPane.columnIndex="1" GridPane.rowIndex="4">
+	<HBox spacing="10" alignment="center_left" GridPane.columnIndex="1" GridPane.rowIndex="5">
 		<Button styleClass="btn-ok" text="%PUB.ok" onAction="#saveRbParams" />
 		<Button styleClass="btn-cancel" text="%PUB.cancel" onAction="#cancelRbParams" />
 	</HBox>

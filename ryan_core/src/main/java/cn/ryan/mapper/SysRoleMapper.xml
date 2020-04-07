@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ryan.dao.SysRoleDao">
+
+	<!-- 返回结果集封装对象 -->
+	<resultMap id="sysRoleMap" type="cn.ryan.model.SysRole">
+		<id column="RID" property="rid" jdbcType="INTEGER" />
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+		<result column="RDESC" property="rdesc" jdbcType="VARCHAR" />
+		<result column="CREATE_DATE" property="createDate" jdbcType="VARCHAR" />
+		<result column="LAST_MODIFY_DATE" property="lastModifyDate" jdbcType="VARCHAR" />
+		<association column="CREATOR_ID" property="creatorUser" javaType="cn.ryan.model.SysUser"
+			select="cn.ryan.dao.SysUserDao.findOne" />
+		<association column="MODIFIER_ID" property="modifierUser" javaType="cn.ryan.model.SysUser"
+			select="cn.ryan.dao.SysUserDao.findOne" />
+	</resultMap>
+
+	<!-- 返回分页查询列表 -->
+	<select id="findByPage" resultMap="sysRoleMap" parameterType="map">
+		SELECT r.* FROM T_ROLE r WHERE 1=1
+		<if test="RIGHTLIKE_name!=''">AND r.NAME like CONCAT(#{RIGHTLIKE_name},'%') </if>
+		<if test="RIGHTLIKE_description!=''">AND r.DESCRIPTION like CONCAT(#{RIGHTLIKE_description},'%') </if>
+		ORDER BY r.RID
+	</select>
+
+	
+
+</mapper>

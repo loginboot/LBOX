@@ -23,7 +23,8 @@
 		<TableView fx:id="robotModes">
 			<columns>
 				<TableColumn fx:id="rbid" prefWidth="75.0" text="ID" />
-				<TableColumn fx:id="mode" prefWidth="175.0" text="Mode Name" />
+				<TableColumn fx:id="modeName" prefWidth="175.0" text="Mode Name" />
+				<TableColumn fx:id="statusName" prefWidth="175.0" text="Status" />
 				<TableColumn fx:id="mdesc" prefWidth="375.0" text="Desc" />
 			</columns>
 			<columnResizePolicy>
@@ -31,26 +32,26 @@
 			</columnResizePolicy>
 		</TableView>
 		<!-- 分頁工具 -->
-		<HBox spacing="5" alignment="center_left">
+		<HBox fx:id="pageBar" spacing="5" alignment="center_left">
 			<padding>
 				<Insets top="5" />
 			</padding>
-			<Label>
+			<Label fx:id="firstPage" onMouseClicked="#chgFirstPage">
 				<styleClass>
 					<String fx:value="pg-btn" />
 					<String fx:value="pgn-last-left" />
 				</styleClass>
 			</Label>
-			<Label>
+			<Label fx:id="prevPage" onMouseClicked="#chgPrevPage">
 				<styleClass>
 					<String fx:value="pg-btn" />
 					<String fx:value="pgn-left" />
 				</styleClass>
 			</Label>
-			<Text>Page</Text>
-			<TextField prefWidth="40" text="1" />
-			<Text>of</Text>
-			<Text>3</Text>
+			<Text text="Page" />
+			<TextField fx:id="currPage" prefWidth="40" text="1" onAction="#chgCurrPage" />
+			<Text text="of" />
+			<Text fx:id="totalPage">3</Text>
 			<ComboBox fx:id="pgBox" editable="false" prefWidth="60" promptText="" onAction="#onclickComboBox">
 				<items>
 					<FXCollections fx:factory="observableArrayList">
@@ -64,13 +65,13 @@
 					<Integer fx:value="10" />
 				</value>
 			</ComboBox>
-			<Label>
+			<Label fx:id="nextPage" onMouseClicked="#chgNextPage">
 				<styleClass>
 					<String fx:value="pg-btn" />
 					<String fx:value="pg-right" />
 				</styleClass>
 			</Label>
-			<Label>
+			<Label fx:id="lastPage" onMouseClicked="#chgLastPage">
 				<styleClass>
 					<String fx:value="pg-btn" />
 					<String fx:value="pg-last-right" />
@@ -82,7 +83,7 @@
 		<padding>
 			<Insets top="10" />
 		</padding>
-		<Button text="Add" />
+		<Button text="Add" styleClass="rb-btn" onAction="#addSetup" />
 		<Button text="Upd" />
 		<Button text="Del" />
 		<Button text="View" />

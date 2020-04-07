@@ -21,12 +21,12 @@
 	</Appenders>
 	<Loggers>
 		<!-- Specify a particular type of output level -->
-		<logger name="cn.ryan" level="info" additivity="false">
+		<logger name="cn.ryan" level="debug" additivity="false">
 			<appender-ref ref="Console" />
 			<appender-ref ref="RollingFile" />
 		</logger>
 		<!-- Configure recorder level -->
-		<Root level="info">
+		<Root level="debug">
 			<!-- Output format -->
 			<AppenderRef ref="RollingFile" />
 			<AppenderRef ref="Console" />

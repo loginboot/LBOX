@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import cn.ryan.model.AbstractEntity;
 import cn.ryan.model.SysUser;
+import cn.ryan.utils.RyanUtil;
 
 /**
  * 
@@ -112,6 +113,29 @@ public class RbRobotMode extends AbstractEntity implements Serializable {
 
     public void setLastModifyDate(String lastModifyDate) {
         this.lastModifyDate = lastModifyDate;
+    }
+
+    private String modeName;
+
+    public String getModeName() {
+        if (RyanUtil.isEmpty(modeName) && mode != null) {
+            return mode.getLabel();
+        }
+        return modeName;
+    }
+
+    public void setModeName(String modeName) {
+        this.modeName = modeName;
+    }
+
+    private String statusName;
+
+    public String getStatusName() {
+        return statusName;
+    }
+
+    public void setStatusName(String statusName) {
+        this.statusName = statusName;
     }
 
 }

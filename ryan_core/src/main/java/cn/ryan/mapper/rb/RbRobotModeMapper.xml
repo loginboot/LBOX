@@ -19,7 +19,7 @@
 	<!-- 返回分页查询列表 -->
 	<select id="findByPage" resultMap="robotModeMap" parameterType="map">
 		SELECT m.* FROM T_RB_ROBOT_MODE m WHERE 1=1
-		<if test="EQ_status!=''">AND m.STATUS=#{EQ_status} </if>
+		<if test="EQ_status!='' and EQ_status!=null">AND m.STATUS=#{EQ_status} </if>
 		<if test="EQ_mode!='' and EQ_mode!=null">AND m.MODE=#{EQ_mode}</if>
 		ORDER BY m.RBID
 	</select>

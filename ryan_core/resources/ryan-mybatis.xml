@@ -7,7 +7,7 @@
 
 	<plugins>
 		<plugin interceptor="cn.ryan.mybatis.utils.PagePlugin">
-			<property name="dialect" value="sqlserver" />
+			<property name="dialect" value="derby" />
 			<property name="pageSqlId" value=".*findByPage*.*" />
 		</plugin>
 	</plugins>

@@ -174,7 +174,7 @@ public class PagePlugin implements Interceptor {
 			buf.append(" FETCH FIRST " + end + " ROWS ONLY) AS ta) WHERE RN>" + start + " ORDER BY RN");
 		} else if ("derby".equals(dialect)) {
 			buf.append(sql);
-			buf.append("OFFSET " + start + " ROWS FETCH NEXT " + pageSize + " ROWS ONLY");
+			buf.append(" OFFSET " + start + " ROWS FETCH NEXT " + pageSize + " ROWS ONLY");
 		} else {
 			buf.append(sql);
 		}

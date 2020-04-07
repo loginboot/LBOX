@@ -1,6 +1,8 @@
 package cn.ryan.exec;
 
 import java.io.File;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,8 +13,11 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.data.domain.Page;
 
+import cn.ryan.model.rb.RbRobotMode;
 import cn.ryan.security.RyanAuthToken;
+import cn.ryan.service.rb.RbRobotModeService;
 
 public class RyanDBExec {
 
@@ -27,7 +32,13 @@ public class RyanDBExec {
 
     public static void main(String[] args) {
         RyanDBExec rdb = RyanDBExec.getInstance();
-        rdb.login("admin", "admin");
+        // rdb.login("admin", "admin");
+        RbRobotModeService rmservice = rdb.getService("rbRobotModeService", RbRobotModeService.class);
+        Map<String, Object> search = new LinkedHashMap<String, Object>();
+        search.put("page", 1);
+        search.put("pageSize", 10);
+        Page<RbRobotMode> rrms = rmservice.findByPage(search);
+        System.out.println(rrms);
     }
 
     private RyanDBExec() {

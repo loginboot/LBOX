@@ -28,6 +28,7 @@
 		<spring.version>5.2.1.RELEASE</spring.version>
 		<aop.version>1.0</aop.version>
 		<aspect.version>1.9.5</aspect.version>
+		<spring.data.version>2.2.4.RELEASE</spring.data.version>
 		<!-- Shiro -->
 		<shiro.version>1.4.2</shiro.version>
 		<!-- servlet -->
@@ -122,6 +123,13 @@
 				<artifactId>spring-jdbc</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-commons -->
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-commons</artifactId>
+				<version>${spring.data.version}</version>
+			</dependency>
+
 
 			<!-- https://mvnrepository.com/artifact/aopalliance/aopalliance -->
 			<dependency>

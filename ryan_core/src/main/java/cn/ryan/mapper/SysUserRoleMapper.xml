@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ryan.dao.SysUserRoleDao">
+	<!-- 返回结果集封装对象 -->
+	<resultMap id="sysUserRoleMap" type="cn.ryan.model.SysUserRole">
+		<id column="URID" property="urId" jdbcType="INTEGER" />
+		<association column="USERID" property="user" javaType="cn.ryan.model.SysUser"
+			select="cn.ryan.dao.SysUserDao.findOne" />
+		<association column="RID" property="role" javaType="cn.ryan.model.SysRole"
+			select="cn.ryan.SysRoleDao.findOne" />
+	</resultMap>
+
+	<!--根據用户ID刪除系统来源關聯表 -->
+	<delete id="deleteByUserId" parameterType="java.lang.Integer">
+		DELETE FROM T_SYS_USER_ROLE WHERE USERID=#{userId}
+	</delete>
+
+	<!-- 根據用戶ID查詢所有關聯系统来源 -->
+	<select id="findByUserId" resultMap="sysUserRoleMap" parameterType="java.lang.Integer">
+		<![CDATA[
+		SELECT * FROM T_SYS_USER_ROLE WHERE USERID=#{userId}
+		]]>
+	</select>
+
+	<!-- 保存或更新角色和用戶關聯信息 -->
+	<insert id="savelist" parameterType="java.util.List">
+		INSERT INTO T_SYS_USER_ROLE(USERID,RID) VALUES
+		<foreach collection="urs" item="item" index="index" separator=",">
+			(#{item.user.userId},#{item.role.rid})
+		</foreach>
+	</insert>
+
+</mapper>

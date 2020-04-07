@@ -166,8 +166,8 @@
 	-fx-background-color: linear-gradient(#9E9E9E, #6c757d);
 }
 
-#mdBox Text{-fx-fill:red;-fx-background-color: green;}
-#mdBox {
+#mdBox Text,#statusBox Text{-fx-fill:red;-fx-background-color: green;}
+#mdBox,#statusBox{
      -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, white;
     -fx-background-insets: 0.0 0.0 -1.0 0.0, 0.0, 1.0, 2.0;
     -fx-background-radius: 3.0px, 3.0px, 2.0px, 1.0px;

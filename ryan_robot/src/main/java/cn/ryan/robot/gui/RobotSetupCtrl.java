@@ -7,10 +7,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import cn.ryan.exec.RyanDBExec;
 import cn.ryan.model.rb.RbRobot;
+import cn.ryan.model.rb.RbRobotMode;
 import cn.ryan.model.rb.RbRobotParams;
+import cn.ryan.robot.RobotSetup;
+import cn.ryan.robot.RobotSetupList;
 import cn.ryan.robot.action.RobotActionManager;
+import cn.ryan.robot.utils.RobotUtil;
 import cn.ryan.service.rb.RbRobotModeService;
 import cn.ryan.utils.RyanLangUtil;
 import javafx.collections.FXCollections;
@@ -27,8 +34,16 @@ import javafx.scene.layout.VBox;
 
 public class RobotSetupCtrl implements Initializable {
 
+    /**
+     * 日志
+     */
+    private static Logger log = LogManager.getLogger(RobotSetupCtrl.class);
+
     @FXML
     private ComboBox<String> mdBox;
+
+    @FXML
+    private ComboBox<String> statusBox;
 
     @FXML
     private TextArea mdesc;
@@ -61,6 +76,12 @@ public class RobotSetupCtrl implements Initializable {
         mdBox.setItems(labs);
         mdBox.getSelectionModel().select(0);
 
+        // 封装状态下拉
+        ObservableList<String> slst = FXCollections.observableArrayList();
+        slst.add(RyanLangUtil.getMsgByCode("PUB.status_0"));
+        slst.add(RyanLangUtil.getMsgByCode("PUB.status_1"));
+        statusBox.setItems(slst);
+        statusBox.getSelectionModel().select(0);
     }
 
     public void onclickMode() {
@@ -107,6 +128,8 @@ public class RobotSetupCtrl implements Initializable {
      * 參數保存
      */
     public void saveRbParams() {
+        // 主對象
+        RbRobotMode rrm = new RbRobotMode();
         // 封裝保存對象
         List<RbRobotParams> rps = new ArrayList<RbRobotParams>();
         // 取得所有讀取的參數
@@ -135,11 +158,29 @@ public class RobotSetupCtrl implements Initializable {
             }
         }
         // 保存數據庫
+        // 读取数据操作服务类
+        RbRobotModeService rmservice = rdb.getService("rbRobotModeService", RbRobotModeService.class);
+        rmservice.saveOrUpdate(rrm, rps);
+        // 隱藏當前的窗口
+        RobotUtil.hideWindow(RobotSetup.class);
+        // 顯示列表窗口
+        RobotUtil.showWindow(RobotSetupList.class);
+        // 重新加载分页列表
 
         System.out.println("<>all pas:" + rps);
     }
 
+    /**
+     * 取消則返回之前的列表
+     */
     public void cancelRbParams() {
+        // 隱藏當前的窗口
+        RobotUtil.hideWindow(RobotSetup.class);
+        // 顯示列表窗口
+        RobotUtil.showWindow(RobotSetupList.class);
+    }
+
+    public void onclickStatus() {
 
     }
 }

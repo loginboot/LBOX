@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ryan.dao.SysUserModeDao">
+	<!-- 返回结果集封装对象 -->
+	<resultMap id="sysUserModeMap" type="cn.ryan.model.SysUserMode">
+		<id column="UMID" property="umId" jdbcType="INTEGER" />
+		<association column="USERID" property="user" javaType="cn.ryan.model.SysUser"
+			select="cn.ryan.dao.SysUserDao.findOne" />
+		<association column="SYS_CODE" property="mode" javaType="cn.ryan.model.SysMode"
+			select="cn.ryan.SysModeDao.findOne" />
+	</resultMap>
+
+	<!--根據用户ID刪除系统来源關聯表 -->
+	<delete id="deleteByUserId" parameterType="java.lang.Integer">
+		DELETE FROM T_SYS_USER_MODE WHERE USERID=#{userId}
+	</delete>
+
+	<!-- 根據用戶ID查詢所有關聯系统来源 -->
+	<select id="findByUserId" resultMap="sysUserModeMap" parameterType="java.lang.Integer">
+		<![CDATA[
+		SELECT * FROM T_SYS_USER_MODE WHERE USERID=#{userId}
+		]]>
+	</select>
+
+	<!-- 保存或更新角色和用戶關聯信息 -->
+	<insert id="savelist" parameterType="java.util.List">
+		INSERT INTO T_SYS_USER_MODE(USERID,SYS_CODE) VALUES
+		<foreach collection="ums" item="item" index="index" separator=",">
+			(#{item.user.userId},#{item.mode.sysCode})
+		</foreach>
+	</insert>
+
+</mapper>

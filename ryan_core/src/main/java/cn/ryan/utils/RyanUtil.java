@@ -199,4 +199,12 @@ public class RyanUtil {
         return sdf.format(time);
     }
 
+    /**
+     * 判斷是否數據字
+     * @param val
+     * @return
+     */
+    public static boolean isNumber(String val) {
+        return StringUtils.isNumeric(val);
+    }
 }

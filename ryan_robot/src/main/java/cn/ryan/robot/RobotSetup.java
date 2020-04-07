@@ -9,6 +9,7 @@ import cn.ryan.utils.RyanLangUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -41,7 +42,10 @@ public class RobotSetup extends Application {
         URL ur = getClass().getResource("/fxml/setup.fxml");
         Pane lgn = FXMLLoader.load(ur, RyanLangUtil.getResBundle());
 
-        Scene ms = new Scene(lgn, 780, 500);
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(lgn);
+
+        Scene ms = new Scene(scrollPane, 780, 500);
         primaryStage.setScene(ms);
 
         // 初始調用controller
@@ -53,8 +57,9 @@ public class RobotSetup extends Application {
         try {
             Stage st = new Stage();
             start(st);
+            log.info("Show this window for successful.");
         } catch (Exception e) {
-            // TODO: handle exception
+            log.error("Show window for error:", e);
         }
     }
 

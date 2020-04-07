@@ -31,7 +31,7 @@ public class RobotSetupList extends Application {
         URL ur = getClass().getResource("/fxml/setupList.fxml");
         Pane lgn = FXMLLoader.load(ur);
 
-        Scene ms = new Scene(lgn, 620, 300);
+        Scene ms = new Scene(lgn, 820, 450);
         primaryStage.setScene(ms);
 
         // 初始調用controller
